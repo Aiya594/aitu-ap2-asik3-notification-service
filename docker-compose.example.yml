@@ -12,7 +12,7 @@ services:
       - nats
       - doctor-service
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: ${APP_DATABASE_URL}
       DOCTOR_SERVICE_ADDR: ${DOCTOR_SCV_URL}
     networks:
       - app-network
@@ -23,7 +23,7 @@ services:
     env_file:
     - ./doctor-service/.env
     environment:
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: ${DOC_DATABASE_URL}
       NATS_URL: ${NATS_URL}
     ports:
       - "${DOC_PORT}:${DOC_PORT}"
