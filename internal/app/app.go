@@ -2,9 +2,9 @@ package app
 
 import (
 	"log"
-	"os"
 
 	"github.com/Aiya594/aitu-ap2-asik3-notification-service/internal/broker"
+	"github.com/Aiya594/aitu-ap2-asik3-notification-service/internal/config"
 	"github.com/Aiya594/aitu-ap2-asik3-notification-service/internal/logger"
 	"github.com/Aiya594/aitu-ap2-asik3-notification-service/internal/subscrider"
 )
@@ -15,9 +15,9 @@ type App struct {
 }
 
 func New() *App {
-	url := os.Getenv("NATS_URL")
+	cfg := config.LoadCfg()
 
-	client, err := broker.New(url)
+	client, err := broker.New(cfg.NatsURL)
 	if err != nil {
 		log.Fatal("cannot connect to NATS:", err)
 	}
