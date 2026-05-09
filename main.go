@@ -29,4 +29,5 @@ func main() {
 
 	<-sig
 	log.Println("shutting down")
+	app.Close()
 }
